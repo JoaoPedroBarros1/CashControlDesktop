@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import generate_password_hash, check_password_hash
 
@@ -149,8 +149,11 @@ def cadastro_post():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('index'))
+    else:
+        flash('Email já está em uso. Por favor, escolha outro email.', 'error')
+        return redirect(url_for('cadastro_form'))
 
-    return redirect(url_for('cadastro_form'))
+    return redirect(url_for('index'))
 
 
 @app.route('/adicionar_receita', methods=['POST'])

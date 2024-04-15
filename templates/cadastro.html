@@ -47,7 +47,6 @@
             box-sizing: border-box;
             outline: none; /
             transition: border-color 0.3s;
-
         }
 
         .input-group input:focus {
@@ -70,8 +69,9 @@
             background-color: #5AF58E;
         }
 
-        .error-message {
+        .alert{
             color: red;
+            margin: 20px;
         }
     </style>
 </head>
@@ -88,9 +88,15 @@
                 <div class="input-group">
                     <input type="password" name="password" required placeholder="Senha">
                 </div>
-                {% if error %}
-                    <p class="error-message">{{ error }}</p>
-                {% endif %}
+               {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                        {{ message }}
+                      </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
                 <button class="cadastro-button" type="submit">Cadastrar</button>
             </form>
         </div>

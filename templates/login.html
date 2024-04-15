@@ -76,27 +76,21 @@
 </head>
 <body>
 
-<div class="login-container">
-    <img src="../static/img/Logo1.png" alt="Logo" class="logo">
-    <form action="{{ url_for('login_post') }}" method="post">
-        <div class="input-group">
-            <input type="text" name="email" required placeholder="Email">
-        </div>
-        <div class="input-group">
-            <input type="password" name="password" required placeholder="Senha">
-        </div>
-        {% if error %}
-            <p class="error-message">{{ error }}</p>
-        {% endif %}
-        <button type="submit" class="login-button">Logar</button>
-    </form>
-<!--    <div class="or">ou entre com</div>-->
-<!--    <div class="icon-group">-->
-<!--        <img src="../static/img/google.png" alt="Ícone 1">-->
-<!--        <img src="../static/img/facebook.png" alt="Ícone 2">-->
-<!--        <img src="../static/img/linkedin.png" alt="Ícone 3">-->
-<!--    </div>-->
-</div>
+    <div class="login-container">
+        <img src="../static/img/Logo1.png" alt="Logo" class="logo">
+        <form action="{{ url_for('login_post') }}" method="post">
+            <div class="input-group">
+                <input type="text" name="email" required placeholder="Email">
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" required placeholder="Senha">
+            </div>
+            {% if error %}
+                <p class="error-message">{{ error }}</p>
+            {% endif %}
+            <button type="submit" class="login-button">Logar</button>
+        </form>
+    </div>
 
 </body>
 </html>
