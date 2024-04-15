@@ -29,7 +29,7 @@
             margin-bottom: 20px;
         }
 
-        .sidebar a.home { /* Adicionando margem à esquerda para alinhar com a logo */
+        .sidebar a.home {
             margin-left: 10px;
         }
 
@@ -57,54 +57,15 @@
             height: 39px;
         }
 
-        .main-panel {
-            margin-left: 170px;
-            padding: 20px;
-        }
-
-        .main-panel h2 {
-            margin-bottom: 20px;
-        }
-
         .card {
             background-color: #ffffff;
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px; /* Adicionando espaço entre os cards */
-        }
+            padding: 5px 20px;
 
-        .card h3 {
-            margin-bottom: 10px;
-        }
-
-        .card {
-            /* Outros estilos existentes */
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-        }
-
-        .card .icon {
-            margin-bottom: 10px; /* Adiciona espaçamento entre a imagem e os outros elementos */
-        }
-
-        .tres-cards {
-            display: flex;
-            justify-content: space-around; /* Distribuindo os cards horizontalmente */
-            align-items: center; /* Centralizando verticalmente */
-            margin-bottom: 20px;
-        }
-
-        .list-container {
-            display: flex;
-            gap: 30px;
-            margin-top: 100px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .list {
-            max-width: 400px; /* Limitar a largura da lista para melhor legibilidade */
+            flex: 1;
         }
 
         .list-item {
@@ -130,7 +91,7 @@
 
         .list-item table th:first-child,
         .list-item table td:first-child {
-            width: 30%; /* Ajustando a largura da primeira coluna */
+            width: 30%;
         }
 
         .list-item img {
@@ -154,21 +115,30 @@
             </form>
         </div>
     </div>
-    <div style="margin-left: 170px">
+    <div style="margin-left: 150px; padding: 20px">
         <h2>Meu Desempenho <img style="height: 2rem; margin-bottom: -0.5rem" src="../static/img/seta-para-a-direita.png" alt="Seta"></h2>
 
-        <div>
-            <div>
-                <div></div>
-                <img />
+        <div style="display: flex; justify-content: space-evenly; gap: 20px; margin-bottom: 20px">
+            <div class="card">
+                <div>
+                    <h3>Saldo Atual <img style="height: 1rem; margin-bottom: -0.1rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>
+                    <p>R$ {{ total_saldo }}</p>
+                </div>
+                <img style="height: 3.5rem" src="../static/img/saldo.svg" alt="Saldo" class="icon">
             </div>
-            <div>
-                <div></div>
-                <img />
+            <div class="card">
+                <div>
+                    <h3>Receitas <img style="height: 1rem; margin-bottom: -0.1rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>
+                    <p>R$ {{ total_receitas }}</p>
+                </div>
+                <img style="height: 3.5rem" src="../static/img/receitas.svg" alt="Receitas" class="icon">
             </div>
-            <div>
-                <div></div>
-                <img />
+            <div class="card">
+                <div>
+                    <h3>Despesas <img style="height: 1rem; margin-bottom: -0.1rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>
+                    <p>R$ {{ total_despesas }}</p>
+                </div>
+                <img style="height: 3.5rem" src="../static/img/despesas.svg" alt="Despesas" class="icon">
             </div>
         </div>
 
@@ -224,86 +194,5 @@
             </div>
         </div>
     </div>
-
-<!--    <div style="display: flex; flex-direction: column">-->
-<!--        <div class="main-panel">-->
-<!--            <h2>Meu Desempenho <img style="height: 2rem; margin-bottom: -0.5rem" src="../static/img/seta-para-a-direita.png" alt="Seta"></h2>-->
-<!--            <div class="Desempenho">-->
-<!--                <div class="tres-cards">-->
-<!--                    <div class="card">-->
-<!--                        <img src="../static/img/saldo.svg" alt="Saldo" class="icon"> &lt;!&ndash; Nova imagem &ndash;&gt;-->
-<!--                        <h3>Saldo Atual <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
-<!--                        <p>R$ {{ total_saldo }}</p>-->
-<!--                    </div>-->
-<!--                    <div class="card">-->
-<!--                        <img src="../static/img/receitas.svg" alt="Receitas" class="icon">-->
-<!--                        <h3>Receitas <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
-<!--                        <p>R$ {{ total_receitas }}</p>-->
-<!--                    </div>-->
-<!--                    <div class="card">-->
-<!--                        <img src="../static/img/despesas.svg" alt="Despesas" class="icon">-->
-<!--                        <h3>Despesas <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
-<!--                        <p>R$ {{ total_despesas }}</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <div class="list-container">-->
-<!--            <div class="list">-->
-<!--                <div class="list-item">-->
-<!--                    <h2>Receitas</h2>-->
-<!--                    <table>-->
-<!--                        <thead>-->
-<!--                            <tr>-->
-<!--                                <th>Nome</th>-->
-<!--                                <th>Data</th>-->
-<!--                                <th>Preço</th>-->
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                            {% for receita in receitas %}-->
-<!--                                <tr>-->
-<!--                                    <th>{{ receita.nome }}</th>-->
-<!--                                    <th>{{ receita.data_emissao }}</th>-->
-<!--                                    <th>{{ receita.valor_receita }}</th>-->
-<!--                                </tr>-->
-<!--                            {% endfor %}-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                    <a href="{{ url_for('receitas') }}">-->
-<!--                        <img class="adc" src="../static/img/adicionar.png" alt="Seta">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="list">-->
-<!--                <div class="list-item">-->
-<!--                    <h2>Despesas</h2>-->
-<!--                    <table>-->
-<!--                        <thead>-->
-<!--                            <tr>-->
-<!--                                <th>Nome</th>-->
-<!--                                <th>Data</th>-->
-<!--                                <th>Preço</th>-->
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                            {% for despesa in despesas %}-->
-<!--                                <tr>-->
-<!--                                    <th>{{ despesa.nome }}</th>-->
-<!--                                    <th>{{ despesa.data_emissao }}</th>-->
-<!--                                    <th>{{ despesa.valor_despesa }}</th>-->
-<!--                                </tr>-->
-<!--                            {% endfor %}-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                    <a href="{{ url_for('despesas') }}">-->
-<!--                        <img class="adc" src="../static/img/adicionar.png" alt="Seta">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
 </body>
 </html>

@@ -77,7 +77,9 @@ def dashboard():
         for despesa in list_despesas:
             total_despesas += float(despesa.valor_despesa)
 
-        total_saldo = total_receitas - total_despesas
+        total_receitas = round(total_receitas, 2)
+        total_despesas = round(total_despesas, 2)
+        total_saldo = round((total_receitas - total_despesas), 2)
 
         return render_template('dashboard.html',
                                receitas=list_receitas,
