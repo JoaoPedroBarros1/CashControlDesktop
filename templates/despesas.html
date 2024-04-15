@@ -103,11 +103,14 @@
 </head>
 <body>
     <div class="sidebar">
-        <img src="../static/Logo1.png" alt="Logo" class="logo">
-        <a href="/dashboard" class="home"><img src="../static/casa.png" alt="Home" class="home"></a>
+        <img src="../static/img/Logo1.png" alt="Logo" class="logo">
+        <a href="/dashboard" class="home"><img src="../static/img/casa.png" alt="Home" class="home"></a>
         <div class="bottom-icons">
-            <a href="/"><img src="../static/cartao-de-endereco.png" alt="Dashboard"></a>
-            <a href="#"><img src="../static/interrogatorio-de-escudo.png" alt="Settings"></a>
+            <form action="/logout" method="POST">
+                <button style="background: none; border: 0" type="submit">
+                    <a href="{{ url_for('logout') }}"><img src="../static/img/cartao-de-endereco.png" alt="Dashboard"></a>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -118,7 +121,7 @@
             <form action="/adicionar_despesa" method="POST">
                 <input type="text" name="nome" placeholder="Nome da despesa">
                 <input type="date" name="data" placeholder="Data">
-                <input type="number" name="preco" placeholder="Preço">
+                <input type="number" step="0.01" name="preco" placeholder="Preço">
                 <button type="submit">Adicionar Despesa</button>
             </form>
         </div>

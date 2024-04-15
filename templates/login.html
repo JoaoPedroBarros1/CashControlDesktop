@@ -78,7 +78,7 @@
 
 <div class="login-container">
     <img src="../static/img/Logo1.png" alt="Logo" class="logo">
-    <form action="{{ url_for('login_form') }}" method="post">
+    <form action="{{ url_for('login_post') }}" method="post">
         <div class="input-group">
             <input type="text" name="email" required placeholder="Email">
         </div>
@@ -90,12 +90,12 @@
         {% endif %}
         <button type="submit" class="login-button">Logar</button>
     </form>
-    <div class="or">ou entre com</div>
-    <div class="icon-group">
-        <img src="../static/img/google.png" alt="Ícone 1">
-        <img src="../static/img/facebook.png" alt="Ícone 2">
-        <img src="../static/img/linkedin.png" alt="Ícone 3">
-    </div>
+<!--    <div class="or">ou entre com</div>-->
+<!--    <div class="icon-group">-->
+<!--        <img src="../static/img/google.png" alt="Ícone 1">-->
+<!--        <img src="../static/img/facebook.png" alt="Ícone 2">-->
+<!--        <img src="../static/img/linkedin.png" alt="Ícone 3">-->
+<!--    </div>-->
 </div>
 
 </body>

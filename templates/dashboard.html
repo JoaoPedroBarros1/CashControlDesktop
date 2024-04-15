@@ -6,12 +6,8 @@
     <title>DashBoard</title>
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            min-height: 100dvh;
             background-color: #EDF3FB;
         }
 
@@ -62,9 +58,8 @@
         }
 
         .main-panel {
-            margin-left: 170px; /* Largura da barra lateral + margem */
+            margin-left: 170px;
             padding: 20px;
-            text-align: center; /* Centralizar conteúdo horizontalmente */
         }
 
         .main-panel h2 {
@@ -113,10 +108,12 @@
         }
 
         .list-item {
+            display: flex;
+            flex-direction: column;
             background-color: #ffffff;
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 20px; /* Adicionar espaço entre os itens da lista */
+            justify-content: space-between;
         }
 
         .list-item table {
@@ -147,74 +144,166 @@
 </head>
 <body>
     <div class="sidebar">
-        <img src="../static/Logo1.png" alt="Logo" class="logo">
-        <a href="#" class="home"><img src="../static/casa.png" alt="Home" class="home"></a>
+        <img src="../static/img/Logo1.png" alt="Logo" class="logo">
+        <a href="#" class="home"><img src="../static/img/casa.png" alt="Home" class="home"></a>
         <div class="bottom-icons">
-            <a href="/"><img src="../static/cartao-de-endereco.png" alt="Dashboard"></a>
-            <a href="#"><img src="../static/interrogatorio-de-escudo.png" alt="Settings"></a>
+            <form action="/logout" method="POST">
+                <button style="background: none; border: 0" type="submit">
+                    <a href="{{ url_for('logout') }}"><img src="../static/img/cartao-de-endereco.png" alt="Dashboard"></a>
+                </button>
+            </form>
         </div>
     </div>
+    <div style="margin-left: 170px">
+        <h2>Meu Desempenho <img style="height: 2rem; margin-bottom: -0.5rem" src="../static/img/seta-para-a-direita.png" alt="Seta"></h2>
 
-    <div class="main-panel">
-        <div class="Desempenho">
-            <h2>Meu Desempenho <img src="../static/seta-para-a-direita.png" alt="Seta"></h2>
-            <div class="tres-cards">
-                <div class="card">
-                    <img src="../static/saldo.png" alt="Saldo" class="icon"> <!-- Nova imagem -->
-                    <h3>Saldo Atual <img src="../static/angulo-direito.png" alt="Seta"></h3>
-                    <p>R$</p>
-                </div>
-                <div class="card">
-                    <img src="../static/receitas.png" alt="Receitas" class="icon"> <!-- Nova imagem -->
-                    <h3>Receitas <img src="../static/angulo-direito.png" alt="Seta"></h3>
-                    <p>R$</p>
-                </div>
-                <div class="card">
-                    <img src="../static/despesas.png" alt="Despesas" class="icon"> <!-- Nova imagem -->
-                    <h3>Despesas <img src="../static/angulo-direito.png" alt="Seta"></h3>
-                    <p>R$</p>
-                </div>
+        <div>
+            <div>
+                <div></div>
+                <img />
+            </div>
+            <div>
+                <div></div>
+                <img />
+            </div>
+            <div>
+                <div></div>
+                <img />
             </div>
         </div>
-    </div>
 
-        <div class="list-container">
-            <div class="list">
-                <div class="list-item">
-                    <h2>Receitas</h2>
-                    <table>
-                        <thead>
+        <div style="display: flex; justify-content: space-evenly; white-space:nowrap">
+            <div class="list-item">
+                <h2>Receitas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for receita in receitas %}
                             <tr>
-                                <th>Nome</th>
-                                <th>Data</th>
-                                <th>Preço</th>
+                                <th>{{ receita.nome }}</th>
+                                <th>{{ receita.data_emissao }}</th>
+                                <th>{{ receita.valor_receita }}</th>
                             </tr>
-                        </thead>
-                    </table>
-                    <a href="{{ url_for('receitas') }}">
-                        <img class="adc" src="../static/adicionar.png" alt="Seta">
-                    </a>
-                </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ url_for('receitas') }}">
+                    <img class="adc" src="../static/img/adicionar.png" alt="Seta">
+                </a>
             </div>
 
-            <div class="list">
-                <div class="list-item">
-                    <h2>Despesas</h2>
-                    <table>
-                        <thead>
+            <div class="list-item">
+                <h2>Despesas</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for despesa in despesas %}
                             <tr>
-                                <th>Nome</th>
-                                <th>Data</th>
-                                <th>Preço</th>
+                                <th>{{ despesa.nome }}</th>
+                                <th>{{ despesa.data_emissao }}</th>
+                                <th>{{ despesa.valor_despesa }}</th>
                             </tr>
-                        </thead>
-                    </table>
-                    <a href="{{ url_for('despesas') }}">
-                        <img class="adc" src="../static/adicionar.png" alt="Seta">
-                    </a>
-                </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{{ url_for('despesas') }}">
+                    <img class="adc" src="../static/img/adicionar.png" alt="Seta">
+                </a>
             </div>
         </div>
     </div>
+
+<!--    <div style="display: flex; flex-direction: column">-->
+<!--        <div class="main-panel">-->
+<!--            <h2>Meu Desempenho <img style="height: 2rem; margin-bottom: -0.5rem" src="../static/img/seta-para-a-direita.png" alt="Seta"></h2>-->
+<!--            <div class="Desempenho">-->
+<!--                <div class="tres-cards">-->
+<!--                    <div class="card">-->
+<!--                        <img src="../static/img/saldo.svg" alt="Saldo" class="icon"> &lt;!&ndash; Nova imagem &ndash;&gt;-->
+<!--                        <h3>Saldo Atual <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
+<!--                        <p>R$ {{ total_saldo }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="card">-->
+<!--                        <img src="../static/img/receitas.svg" alt="Receitas" class="icon">-->
+<!--                        <h3>Receitas <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
+<!--                        <p>R$ {{ total_receitas }}</p>-->
+<!--                    </div>-->
+<!--                    <div class="card">-->
+<!--                        <img src="../static/img/despesas.svg" alt="Despesas" class="icon">-->
+<!--                        <h3>Despesas <img style="height: 1.5rem; margin-bottom: -0.4rem" src="../static/img/angulo-direito.png" alt="Seta"></h3>-->
+<!--                        <p>R$ {{ total_despesas }}</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--        <div class="list-container">-->
+<!--            <div class="list">-->
+<!--                <div class="list-item">-->
+<!--                    <h2>Receitas</h2>-->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th>Nome</th>-->
+<!--                                <th>Data</th>-->
+<!--                                <th>Preço</th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            {% for receita in receitas %}-->
+<!--                                <tr>-->
+<!--                                    <th>{{ receita.nome }}</th>-->
+<!--                                    <th>{{ receita.data_emissao }}</th>-->
+<!--                                    <th>{{ receita.valor_receita }}</th>-->
+<!--                                </tr>-->
+<!--                            {% endfor %}-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    <a href="{{ url_for('receitas') }}">-->
+<!--                        <img class="adc" src="../static/img/adicionar.png" alt="Seta">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            <div class="list">-->
+<!--                <div class="list-item">-->
+<!--                    <h2>Despesas</h2>-->
+<!--                    <table>-->
+<!--                        <thead>-->
+<!--                            <tr>-->
+<!--                                <th>Nome</th>-->
+<!--                                <th>Data</th>-->
+<!--                                <th>Preço</th>-->
+<!--                            </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                            {% for despesa in despesas %}-->
+<!--                                <tr>-->
+<!--                                    <th>{{ despesa.nome }}</th>-->
+<!--                                    <th>{{ despesa.data_emissao }}</th>-->
+<!--                                    <th>{{ despesa.valor_despesa }}</th>-->
+<!--                                </tr>-->
+<!--                            {% endfor %}-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    <a href="{{ url_for('despesas') }}">-->
+<!--                        <img class="adc" src="../static/img/adicionar.png" alt="Seta">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </body>
 </html>
