@@ -1,0 +1,43 @@
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 5px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.list-item table {
+    margin-bottom: 10px;
+}
+
+.list-item table th,
+.list-item table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-item table th:first-child,
+.list-item table td:first-child {
+    width: 30%;
+}
+
+.list-item img {
+    display: block;
+    margin: 0 auto;
+    width: 30px;
+    height: 30px;
+    margin-top: 40px;
+}

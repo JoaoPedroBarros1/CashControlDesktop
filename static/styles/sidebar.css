@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #EDF3FB;
+}
+
+.sidebar {
+    height: calc(100dvh - 40px);
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.formbutton {
+    background: none;
+    border: 0;
+    font-size: 1em;
+}

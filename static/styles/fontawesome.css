@@ -1,0 +1,11 @@
+.fontbutton {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    text-decoration: none;
+    color: black;
+}
+
+.leavebutton {
+    margin-bottom: 30px;
+}
